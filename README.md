@@ -1,8 +1,8 @@
 ![](https://raw.githubusercontent.com/cto-ai/aws/master/assets/banner.png)
 
-# BEANSTALK OP (GO)
+# Beanstalk Op (GO)
 
-An interactive command line wrapper of AWS for deploying applications to Elastic Beanstalk and creating Amazon Relational Database Service instances to use with these deployments. 
+Dynamically deploy applications to AWS Elastic Beanstalk. This Op also streamlines connections to the Amazon Relational Database Service (RDS) for use with deployed applications. 
 
 ## Requirements
 
