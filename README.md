@@ -35,7 +35,7 @@ When connecting a RDS database to your application, this Op will create a direct
 To start this Op prompt run:
 
 ```bash
-ops run beanstalk
+ops run @cto.ai/beanstalk
 ```
 
 ## Demo Applications
