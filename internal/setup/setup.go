@@ -49,7 +49,7 @@ We’re building the world’s best developer experiences.
 
 	logger.LogSlack(opsClients.Ux, "\nCTO.ai Ops - Beanstalk\n")
 	logger.LogSlack(opsClients.Ux, `This Op will create an Elastic Beanstalk application and deploy your Github repository.
-This Op can also create a Relational Database Service for your Elastic Beanstalk application.
+In addition, it can create a Relational Database Service for your Elastic Beanstalk application.
 
 Requirements:
  - Github
