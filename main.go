@@ -85,20 +85,11 @@ func main() {
 		Sdk:    ctoai.NewSdk(),
 	}
 
-	logger.LogSlack(opsClients.Ux, "\nCTO.ai Ops - Beanstalk\n")
-	logger.LogSlack(opsClients.Ux, `This Op will create an Elastic Beanstalk application and deploy your Github repository.
-This Op can also create a Relational Database Service for your Elastic Beanstalk application.
-
-Requirements:
- - Github
-    - Username
-    - Access Token (If the repository is private.)
-    - Repository Name
-	
-  - AWS
-    - Access Key ID
-    - Secret Access Key
-	`)
+	err := setup.PrintIntro(&opsClients)
+	if err != nil {
+		logger.LogSlackError(opsClients.Ux, err)
+		return
+	}
 
 	githubRepoDetails, err := setup.GithubSetup(&opsClients)
 	if err != nil {
