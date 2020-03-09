@@ -25,6 +25,46 @@ type GithubRepoDetails struct {
 	Platform string
 }
 
+func PrintIntro(opsClients *SDKClients) error {
+	switch opsClients.Sdk.GetInterfaceType() {
+	case "terminal":
+		logger.LogSlack(opsClients.Ux, `
+  [94m██████[39m[33m╗[39m [94m████████[39m[33m╗[39m  [94m██████[39m[33m╗ [39m      [94m█████[39m[33m╗[39m  [94m██[39m[33m╗[39m
+ [94m██[39m[33m╔════╝[39m [33m╚══[39m[94m██[39m[33m╔══╝[39m [94m██[39m[33m╔═══[39m[94m██[39m[33m╗[39m     [94m██[39m[33m╔══[39m[94m██[39m[33m╗[39m [94m██[39m[33m║[39m
+ [94m██[39m[33m║     [39m [94m   ██[39m[33m║   [39m [94m██[39m[33m║[39m[94m   ██[39m[33m║[39m     [94m███████[39m[33m║[39m [94m██[39m[33m║[39m
+ [94m██[39m[33m║     [39m [94m   ██[39m[33m║   [39m [94m██[39m[33m║[39m[94m   ██[39m[33m║[39m     [94m██[39m[33m╔══[39m[94m██[39m[33m║[39m [94m██[39m[33m║[39m
+ [33m╚[39m[94m██████[39m[33m╗[39m [94m   ██[39m[33m║   [39m [33m╚[39m[94m██████[39m[33m╔╝[39m [94m██[39m[33m╗[39m [94m██[39m[33m║[39m[94m  ██[39m[33m║[39m [94m██[39m[33m║[39m
+ [33m ╚═════╝[39m [33m   ╚═╝   [39m [33m ╚═════╝ [39m [33m╚═╝[39m [33m╚═╝  ╚═╝[39m [33m╚═╝[39m
+We’re building the world’s best developer experiences.
+  `)
+	default:
+		logger.LogSlack(opsClients.Ux, `:white_square::white_square::white_square::white_square::white_square::white_square::white_square::white_square::white_square::white_square::white_square::white_square::white_square::white_square::white_square::white_square:
+:white_square::white_square::black_square::black_square::white_square::white_square::black_square::black_square::black_square::white_square::white_square::white_square::black_square::black_square::black_square::white_square:
+:white_square::black_square::white_square::white_square::black_square::white_square::black_square::white_square::white_square::black_square::white_square::black_square::white_square::white_square::white_square::white_square:
+:white_square::black_square::white_square::white_square::black_square::white_square::black_square::black_square::black_square::white_square::white_square::white_square::black_square::black_square::white_square::white_square:
+:white_square::black_square::white_square::white_square::black_square::white_square::black_square::white_square::white_square::white_square::white_square::white_square::white_square::white_square::black_square::white_square:
+:white_square::white_square::black_square::black_square::white_square::white_square::black_square::white_square::white_square::white_square::white_square::black_square::black_square::black_square::white_square::white_square:
+:white_square::white_square::white_square::white_square::white_square::white_square::white_square::white_square::white_square::white_square::white_square::white_square::white_square::white_square::white_square::white_square:`)
+	}
+
+	logger.LogSlack(opsClients.Ux, "\nCTO.ai Ops - Beanstalk\n")
+	logger.LogSlack(opsClients.Ux, `This Op will create an Elastic Beanstalk application and deploy your Github repository.
+This Op can also create a Relational Database Service for your Elastic Beanstalk application.
+
+Requirements:
+ - Github
+    - Username
+    - Access Token (If the repository is private.)
+    - Repository Name
+	
+  - AWS
+    - Access Key ID
+    - Secret Access Key
+	`)
+
+	return nil
+}
+
 func GithubSetup(opsClients *SDKClients) (GithubRepoDetails, error) {
 	githubRepoDetails, err := promptGithubInfo(opsClients)
 	if err != nil {

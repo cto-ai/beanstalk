@@ -2,7 +2,7 @@
 version: "1"
 commands:
   - name: beanstalk:1.0.0
-    public: false
+    public: true
     description: "Create an AWS Elastic Beanstalk application."
     run: /bin/main
     sdk: "2"
